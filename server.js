@@ -11,13 +11,17 @@ const signin = require("./controllers/signin");
 const profile = require("./controllers/profile");
 const image = require("./controllers/image");
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
+
 const db = knex({
   client: "pg",
   connection: {
-    host: "127.0.0.1",
-    user: "vargaae",
-    password: "vargaae",
-    database: "smart_brain",
+    connectionString: process.env.DATABASE_URL,
+    ssl: true
+    // host: "127.0.0.1",
+    // user: "vargaae",
+    // password: "vargaae",
+    // database: "smart_brain",
   },
 });
 
@@ -45,6 +49,12 @@ app.put("/image", (req, res) => {
   image.handleImage(req, res, db);
 });
 
-app.listen(process.env.PORT || 3000, ()=> { 
-  console.log('app is running on port ${process.env.PORT}') 
+app.post("/imageurl", (req, res) => {
+  image.handleApiCall(req, res);
+});
+
+const PORT = process.env.PORT
+app.listen(PORT || 3000, ()=> { 
+  console.log(`app is running on port ${PORT}`) 
 })
+// console.log(process.env)
