@@ -16,12 +16,13 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 const db = knex({
   client: "pg",
   connection: {
-    // connectionString: process.env.DATABASE_URL,
-    // ssl: true
-    host: "postgresql-vertical-93937",
-    user: "vargaae",
-    password: "vargaae",
-    database: "smart_brain",
+    connectionString: process.env.DATABASE_URL,
+    ssl: true
+    // host: process.env.DATABASE_URL,
+    // host: "postgresql-vertical-93937",
+    // user: "vargaae",
+    // password: "vargaae",
+    // database: "smart_brain",
   },
 });
 
