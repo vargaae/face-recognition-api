@@ -6,6 +6,9 @@ const cors = require("cors");
 const knex = require("knex");
 const res = require("express/lib/response");
 
+const register = require("./controllers/register");
+const signin = require("./controllers/signin");
+
 // TODO: Connecting the server with the Front End:
 const db = knex({
   // Enter your own db information here based on what you created
@@ -27,33 +30,34 @@ const db = knex({
 const app = express();
 
 // TODO: Connecting the server with the Front End:
-const database = {
-  users: [
-    {
-      id: "123",
-      name: "Andras",
-      password: "cookies",
-      email: "vargaae@hotmail.com",
-      entries: 0,
-      joined: new Date(),
-    },
-    {
-      id: "124",
-      name: "Sally",
-      password: "bananas",
-      email: "sally@gmail.com",
-      entries: 0,
-      joined: new Date(),
-    },
-  ],
-};
+// const database = {
+//   users: [
+//     {
+//       id: "123",
+//       name: "Andras",
+//       password: "cookies",
+//       email: "vargaae@hotmail.com",
+//       entries: 0,
+//       joined: new Date(),
+//     },
+//     {
+//       id: "124",
+//       name: "Sally",
+//       password: "bananas",
+//       email: "sally@gmail.com",
+//       entries: 0,
+//       joined: new Date(),
+//     },
+//   ],
+// };
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json()); // latest version of exressJS now comes with Body-Parser!
 
 app.get("/", (req, res) => {
-  res.send(db.users);
+  //   res.send(database.users);
+  res.send("success");
 });
 
 // app.post("/signin", (req, res) => {
@@ -67,54 +71,11 @@ app.get("/", (req, res) => {
 // });
 // TODO: Connect to SQL Database
 app.post("/signin", (req, res) => {
-  db.select("email", "hash")
-    .from("login")
-    .where("email", "=", req.body.email)
-    .then((data) => {
-      const isValid = bcrypt.compareSync(req.body.password, data[0].hash);
-      if (isValid) {
-        return db
-          .select("*")
-          .from("users")
-          .where("email", "=", req.body.email)
-          .then((user) => {
-            res.json(user[0]);
-          })
-          .catch((err) => res.status(400).json("unable to get user"));
-      } else {
-        res.status(400).json("wrong credentials");
-      }
-    })
-    .catch((err) => res.status(400).json("wrong credentials"));
+  signin.handleSignIn(req, res, db, bcrypt);
 });
 
 app.post("/register", (req, res) => {
-  const { email, name, password } = req.body;
-  const salt = bcrypt.genSaltSync(saltRounds);
-  const hash = bcrypt.hashSync(password, salt);
-  db.transaction((trx) => {
-    trx
-      .insert({
-        hash: hash,
-        email: email,
-      })
-      .into("login")
-      .returning("email")
-      .then((loginEmail) => {
-        return trx("users")
-          .returning("*")
-          .insert({
-            email: loginEmail[0],
-            name: name,
-            joined: new Date(),
-          })
-          .then((user) => {
-            res.json(user[0]);
-          });
-      })
-      .then(trx.commit)
-      .catch(trx.rollback);
-  }).catch((err) => res.status(400).json("unable to register"));
+  register.handleRegister(req, res, db, bcrypt, saltRounds);
 });
 // return (
 //   db("users")
