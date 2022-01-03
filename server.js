@@ -18,11 +18,6 @@ const db = knex({
   connection: {
     connectionString: process.env.DATABASE_URL,
     ssl: true
-    // host: process.env.DATABASE_URL,
-    // host: "postgresql-vertical-93937",
-    // user: "vargaae",
-    // password: "vargaae",
-    // database: "smart_brain",
   },
 });
 
@@ -58,4 +53,3 @@ const PORT = process.env.PORT
 app.listen(PORT || 3000, ()=> { 
   console.log(`app is running on port ${PORT}`) 
 })
-// console.log(process.env)

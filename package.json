@@ -1,7 +1,7 @@
 {
-  "name": "face-recognition-api",
-  "version": "1.0.0",
-  "description": "API for Face Recognition Application",
+  "name": "image-detection-api",
+  "version": "1.1.0",
+  "description": "API for Image Detection Application",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
