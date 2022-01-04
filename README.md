@@ -13,10 +13,10 @@ AI detection image analysis | AI visual inspection tool
 application with Clarifai API.
 This application analyses the loaded image and makes predictions of concepts, that we can use for example for keywords. I designed and developed the NodeJS server application for this AI detection tool and it's connected to the PostgreSQL database and to the client side through the Routes - REST API. Server side has encrypted Authentication and Authorization services.
 </p>
-<img alt="Application image" src="https://www.clarifai.com/hs-fs/hubfs/logo/Clarifai/clarifai-740x150.png?width=120&name=clarifai-740x150.png" width="250" />
+<img alt="Application image" src="https://www.clarifai.com/hs-fs/hubfs/logo/Clarifai/clarifai-740x150.png?width=120&name=clarifai-740x150.png" width="150" />
  🚀 Cloud Application Platform: deployed on Heroku (PaaS) 
 both BE+FE applications and the DB entirely in the CLOUD:
-<img alt="Application image" src="https://blackdeerdev.com/wp-content/uploads/2021/02/Heroku.png" width="400" />
+<img alt="Application image" src="https://coralogix.com/wp-content/uploads/2020/05/Heroku-Monitoring-Logging.png" width="400" />
 
 ## 🛠 Server side: 
 - REST API with Node JS-express server
