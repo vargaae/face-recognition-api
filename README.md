@@ -31,8 +31,17 @@ are set with email registration-log in system on the server side throughout the 
 
 ## 🛠 ROUTES - Controllers
 
-/ --> res = this is working
-/signin --> POST success/fail
-/register --> POST = user
-/profile/:userId --> GET = user
-/image --> PUT --> user (ranking)
+ - / --> res = this is working
+ - /signin --> POST success/fail
+ - /register --> POST = user
+ - /profile/:userId --> GET = user
+ - /image --> PUT --> user (ranking)
+
+ ## Front End Application Integration - Screenshots
+ - Image Analysis
+ - Sign In
+ - Registration
+
+<div align="center">
+  <img alt="Application image" src="https://vargaae.hu/images/projects/aiimagedetect.jpg" width="700" />
+</div>
