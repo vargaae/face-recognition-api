@@ -1,9 +1,7 @@
 # AI IMAGE DETECTION IMAGE ANALYSIS APPLICATION - NODE JS - Connected to SQL database
 
  Server Side of the Full Stack Image Detection Application.
- ## 🛠 Client Side Repository
-<a href="https://github.com/vargaae/image-detect-app" target="_blank"> ReactJS Application on the client side</a>
-## AI Detection Image Analysis Project
+## AI Detection Image Analysis
 <div align="center">
   <img alt="Application image" src="https://cssh.northeastern.edu/informationethics/wp-content/uploads/sites/44/2020/07/ai@2x.png" width="400" />
 </div>
